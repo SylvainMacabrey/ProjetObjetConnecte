@@ -1,6 +1,5 @@
 import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.Socket;
 
 class MainClient  {
 
@@ -28,7 +27,6 @@ class MainClient  {
     }
 
     public void mainLoop() {
-
 		String line="";
 		boolean stop = false;
 		byte[] cmdCar = new byte[2];
