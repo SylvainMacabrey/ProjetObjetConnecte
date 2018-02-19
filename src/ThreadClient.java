@@ -20,13 +20,14 @@ class ThreadClient extends Thread  {
 		int turn = 0;
 		try {
 		    while (!stop) {
-			/* A COMPLETER :
-			   - lire une ligne dans le fichier xbee
-			   - analyzer la trame
-			   - si position actuelle = celle du barycentre, arrêter la voiture
-			   - si turn vaut 0, envoyer requete SETPOSITION et récupérer le barycentre courant		  
-			*/
-			turn  = (turn+1)%4;
+				/* A COMPLETER :
+				   - lire une ligne dans le fichier xbee
+				   - analyzer la trame
+				   - si position actuelle = celle du barycentre, arrêter la voiture
+				   - si turn vaut 0, envoyer requete SETPOSITION et récupérer le barycentre courant
+				*/
+				turn  = (turn+1)%4;
+
 		    }
 		}
 		catch(IOException e) {

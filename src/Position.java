@@ -12,11 +12,13 @@ public class Position implements Serializable {
 		this.altitude = 0;
     }
 
+    @Override
     public String toString() {
-        String msg = "latitude: " + latitude + ", "
-        		   + "longitude: " + longitude + ", "
-        		   + "altitude: " + altitude;
-        return msg;
+        return "Position{" +
+                "latitude = " + latitude +
+                ", longitude = " + longitude +
+                ", altitude = " + altitude +
+                '}';
     }
 
     // A COMPLETER

@@ -34,16 +34,45 @@ class MainClient  {
 		try {
 		    while (!stop) {
 				line = consoleIn.readLine();
-				if (line.equals("AV")) {
-				    // remplir cmdCar
-				    // envoyer cmdCar au Xbee (cf. writeToXbee() dans Communicator)
-				} else if (line.equals("TG")) {
-			    // A COMPLETER
-			    }
-				// A COMPLETER avec les autres possibilités de saisie
-				else if (line.equals("quit")) {
-				    stop = true;
-				}
+                switch (line) {
+                    case "AV":
+                        // remplir cmdCar
+                        // envoyer cmdCar au Xbee (cf. writeToXbee() dans Communicator)
+                        break;
+                    case "RE":
+                        // A COMPLETER
+                        break;
+                    case "TG":
+                        // A COMPLETER
+                        break;
+                    case "TD":
+                        // A COMPLETER
+                        break;
+                    case "RG":
+                        // A COMPLETER
+                        break;
+                    case "RD":
+                        // A COMPLETER
+                        break;
+                    case "ST":
+                        // A COMPLETER
+                        break;
+                    case "GO":
+                        // A COMPLETER
+                        break;
+                    case "SU":
+                        // A COMPLETER
+                        break;
+                    case "SD":
+                        // A COMPLETER
+                        break;
+                    case "GP":
+                        // A COMPLETER
+                        break;
+                    case "quit":
+                        stop = true;
+                        break;
+                }
 		    }
 		}
 		catch(IOException e) {

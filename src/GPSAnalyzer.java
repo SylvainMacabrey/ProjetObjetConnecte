@@ -14,7 +14,7 @@ class GPSAnalyzer {
 
    public void analyzeFrame(String frame) {
       String[] gngga = frame.split(",");
-      if(Objects.equals(gngga[0], "$gngga")) {
+      if(Objects.equals(gngga[0], "$GNGGA")) {
          if(frame.length() == 15) {
             if(Objects.equals(gngga[3], "N") && Objects.equals(gngga[5], "E")) {
                this.latitude = Double.parseDouble(gngga[2]);
