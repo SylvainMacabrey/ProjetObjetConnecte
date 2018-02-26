@@ -86,7 +86,7 @@ class MainClient  {
                         comm.writeToXbee(cmdCar);
                         break;
                     case "GP":
-                        // A COMPLETER
+                        comm.sendGetPositionRequest();
                         break;
                     case "quit":
                         stop = true;
