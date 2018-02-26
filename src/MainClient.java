@@ -36,35 +36,54 @@ class MainClient  {
 				line = consoleIn.readLine();
                 switch (line) {
                     case "AV":
-                        // remplir cmdCar
-                        // envoyer cmdCar au Xbee (cf. writeToXbee() dans Communicator)
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 1;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "RE":
-                        // A COMPLETER
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 2;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "TG":
-                        // A COMPLETER
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 3;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "TD":
-                        // A COMPLETER
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 4;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "RG":
-                        // A COMPLETER
+                        cmdCar[0] = 10;
+                        cmdCar[1] =5;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "RD":
-                        // A COMPLETER
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 6;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "ST":
-                        // A COMPLETER
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 4;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "GO":
-                        // A COMPLETER
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 5;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "SU":
-                        // A COMPLETER
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 1;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "SD":
-                        // A COMPLETER
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 2;
+                        comm.writeToXbee(cmdCar);
                         break;
                     case "GP":
                         // A COMPLETER
