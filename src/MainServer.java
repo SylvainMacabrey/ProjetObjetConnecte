@@ -68,12 +68,35 @@ public class MainServer {
         ArrayList<Position> positions = posClients.get(numClient);
         positions.add(new Position(latitude, longitude, altitude));
         Position barycentre = calculBarycentre(altitude);
-        Segment s1 = new Segment();
-        Segment s2 = new Segment();
+        Position a; // dernière position connu
+        Position b; // avant dernière position connu
+        Segment s1 = new Segment(a, b);
+        Segment s2 = new Segment(a, barycentre);
+        double angle = calculAngle(s1.calculLongueurSegment(), s2.calculLongueurSegment(), calculScalaire(a, b));
+        if(angle >= -22.5 && angle <= 22.5) {
+
+        } else if (angle > 22.5 && angle <= 90) {
+
+        } else if (angle > -90 && angle <= -22.5) {
+
+        } else if (angle > 90 && angle <= 157.5) {
+
+        } else if (angle > -157.5 && angle <= -90) {
+
+        } else {
+
+        }
     }
 
     private void getPosition() {
-
+        for (Map.Entry mapentry : posClients.entrySet()) {
+            ArrayList<Position> positions = posClients.get(mapentry.getKey());
+            double latitude = positions.get(positions.size()-1).getLatitude();
+            double longitude = positions.get(positions.size()-1).getLongitude();
+            double altitude = positions.get(positions.size()-1).getAltitude();
+            Position p = new Position(latitude, longitude, altitude);
+            System.out.println(p);
+        }
     }
 
     private Position calculBarycentre(double altitude) {
@@ -85,6 +108,15 @@ public class MainServer {
         }
         int size = posClients.size();
         return new Position(sommeX/size, sommeY/size, altitude);
+    }
+
+    private double calculScalaire(Position p1, Position p2) {
+        return p1.getLatitude() * p2.getLatitude() + p1.getLongitude() * p2.getLongitude();
+    }
+
+    private double calculAngle(double longueur1, double longueur2, double produitScalaire) {
+        double cos = produitScalaire / (longueur1 * longueur2);
+        return Math.acos(cos);
     }
 
 }
