@@ -1,6 +1,4 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
 
 class ThreadClient extends Thread  {
 
@@ -26,6 +24,7 @@ class ThreadClient extends Thread  {
 				   - si position actuelle = celle du barycentre, arrêter la voiture
 				   - si turn vaut 0, envoyer requete SETPOSITION et récupérer le barycentre courant
 				*/
+				analyzer.analyzeFrame(comm.readFromXbee());
 				turn  = (turn+1)%4;
 
 		    }
