@@ -99,15 +99,17 @@ public class MainServer {
         oos.writeObject(barycentre);
     }
 
-    private void getPosition() {
+    private void getPosition() throws IOException {
+        ArrayList posClient = new ArrayList();
         for (Map.Entry mapentry : posClients.entrySet()) {
             ArrayList<Position> positions = posClients.get(mapentry.getKey());
             double latitude = positions.get(positions.size()-1).getLatitude();
             double longitude = positions.get(positions.size()-1).getLongitude();
             double altitude = positions.get(positions.size()-1).getAltitude();
             Position p = new Position(latitude, longitude, altitude);
-            System.out.println(p);
+            posClient.add(p);
         }
+        oos.writeObject(posClient);
     }
 
     private Position calculBarycentre(double altitude) {
