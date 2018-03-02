@@ -100,7 +100,9 @@ class MainClient  {
 		}
 		catch(IOException e) {
 		    System.out.println("cannot communicated with server. Aborting");
-		}
+		} catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
 		
