@@ -81,6 +81,7 @@ public class MainServer {
         Segment s1 = new Segment(a, b);
         Segment s2 = new Segment(a, barycentre);
         double angle = calculAngle(s1.calculLongueurSegment(), s2.calculLongueurSegment(), calculScalaire(a, b));
+        byte[] ordre = new byte[2];
         if(angle >= -22.5 && angle <= 22.5) {
 
         } else if (angle > 22.5 && angle <= 90) {
@@ -94,6 +95,8 @@ public class MainServer {
         } else {
 
         }
+        oos.writeObject(ordre);
+        oos.writeObject(barycentre);
     }
 
     private void getPosition() {

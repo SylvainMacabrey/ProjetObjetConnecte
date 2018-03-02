@@ -36,17 +36,17 @@ class Communicator  {
 		os.write(buf,0,2);
     }
 
-    public synchronized Position sendSetPositionRequest(double latitude, double longitude, double altitude) throws IOException {
+    public synchronized Position sendSetPositionRequest(double latitude, double longitude, double altitude) throws IOException, ClassNotFoundException {
 		Position pos = null;
-		// A COMPLETER
 		// envoie la requête SETPOSITION AU SERVEUR
         oos.writeDouble(latitude);
         oos.writeDouble(longitude);
         oos.writeDouble(altitude);
-
+        oos.flush();
 		// reçoit l'ordre pour l'arduino et l'envoie à 'larduino via writeToXbee
-
+        writeToXbee((byte[]) ois.readObject());
 		// reçoit la nouvelle position du barycentre -> pos
+        pos = (Position) ois.readObject();
 		return pos;	
     }
 
