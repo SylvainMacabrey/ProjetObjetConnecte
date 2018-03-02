@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 class MainClient  {
 
@@ -86,7 +87,10 @@ class MainClient  {
                         comm.writeToXbee(cmdCar);
                         break;
                     case "GP":
-                        comm.sendGetPositionRequest();
+                        ArrayList<Position> pos = comm.sendGetPositionRequest();
+                        for (Position p: pos) {
+                            System.out.println(p);
+                        }
                         break;
                     case "quit":
                         stop = true;
