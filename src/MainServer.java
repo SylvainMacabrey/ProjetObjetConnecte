@@ -15,6 +15,8 @@ public class MainServer {
 
     ObjectOutputStream oos;
     ObjectInputStream ois;
+    Communicator comm;
+    String xbeeFile;
     ServerSocket conn;
     Socket sock;
     int port;
@@ -22,11 +24,12 @@ public class MainServer {
 
     HashMap<Integer, ArrayList<Position>> posClients;
 
-    public MainServer(int port) throws IOException {
+    public MainServer(int port, Communicator comm) throws IOException {
         idClient = 1;
         posClients = new HashMap<Integer, ArrayList<Position>>();
         this.port = port;
         conn = new ServerSocket(port);
+        this.comm = comm;
     }
 
     public void mainLoop() {
@@ -76,24 +79,36 @@ public class MainServer {
         ArrayList<Position> positions = posClients.get(numClient);
         positions.add(new Position(latitude, longitude, altitude));
         Position barycentre = calculBarycentre(altitude);
-        Position a ; // dernière position connu
+        Position a; // dernière position connu
         Position b; // avant dernière position connu
         Segment s1 = new Segment(a, b);
         Segment s2 = new Segment(a, barycentre);
         double angle = calculAngle(s1.calculLongueurSegment(), s2.calculLongueurSegment(), calculScalaire(a, b));
         byte[] ordre = new byte[2];
         if(angle >= -22.5 && angle <= 22.5) {
-
+            ordre[0] = 10;
+            ordre[1] = 1;
+            comm.writeToXbee(ordre);
         } else if (angle > 22.5 && angle <= 90) {
-
+            ordre[0] = 10;
+            ordre[1] = 3;
+            comm.writeToXbee(ordre);
         } else if (angle > -90 && angle <= -22.5) {
-
+            ordre[0] = 10;
+            ordre[1] = 4;
+            comm.writeToXbee(ordre);
         } else if (angle > 90 && angle <= 157.5) {
-
+            ordre[0] = 10;
+            ordre[1] =5;
+            comm.writeToXbee(ordre);
         } else if (angle > -157.5 && angle <= -90) {
-
+            ordre[0] = 10;
+            ordre[1] = 6;
+            comm.writeToXbee(ordre);
         } else {
-
+            ordre[0] = 10;
+            ordre[1] = 2;
+            comm.writeToXbee(ordre);
         }
         oos.writeObject(ordre);
         oos.writeObject(barycentre);
