@@ -34,209 +34,59 @@ class MainClient  {
     public void mainLoop() {
 		String line="";
 		boolean stop = false;
-		byte[] cmdCar = new byte[16];
+		byte[] cmdCar = new byte[2];
 		try {
 		    while (!stop) {
 				line = consoleIn.readLine();
                 switch (line) {
                     case "AV":
-                        cmdCar[0] = 0;
+                        cmdCar[0] = 10;
                         cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 1;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 0;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "RE":
-                        cmdCar[0] = 0;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 0;
-                        cmdCar[9] = 1;
-                        cmdCar[10] = 0;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 2;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "TG":
-                        cmdCar[0] = 0;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 1;
-                        cmdCar[9] = 1;
-                        cmdCar[10] = 0;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 3;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "TD":
-                        cmdCar[0] = 0;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 0;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 1;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 4;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "RG":
-                        cmdCar[0] = 0;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 1;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 1;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 5;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "RD":
-                        cmdCar[0] = 0;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 0;
-                        cmdCar[9] = 1;
-                        cmdCar[10] = 1;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 10;
+                        cmdCar[1] = 6;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "ST":
-                        cmdCar[0] = 1;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 0;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 1;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 4;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "GO":
-                        cmdCar[0] = 1;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 1;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 1;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 5;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "SU":
-                        cmdCar[0] = 1;
+                        cmdCar[0] = 11;
                         cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 1;
-                        cmdCar[9] = 0;
-                        cmdCar[10] = 0;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "SD":
-                        cmdCar[0] = 1;
-                        cmdCar[1] = 1;
-                        cmdCar[2] = 0;
-                        cmdCar[3] = 1;
-                        cmdCar[4] = 0;
-                        cmdCar[5] = 0;
-                        cmdCar[6] = 0;
-                        cmdCar[7] = 0;
-
-                        cmdCar[8] = 0;
-                        cmdCar[9] = 1;
-                        cmdCar[10] = 0;
-                        cmdCar[11] = 0;
-                        cmdCar[12] = 0;
-                        cmdCar[13] = 0;
-                        cmdCar[14] = 0;
-                        cmdCar[15] = 0;
+                        cmdCar[0] = 11;
+                        cmdCar[1] = 2;
                         comm.writeToXbee(cmdCar);
                         break;
                     case "GP":
