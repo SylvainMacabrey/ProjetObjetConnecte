@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public class MainServer {
 
-
     ObjectOutputStream oos;
     ObjectInputStream ois;
     Communicator comm;
@@ -42,8 +41,8 @@ public class MainServer {
                 oos.flush();
                 ArrayList<Position> pos = new ArrayList<Position>();
                 posClients.put(idClient,pos);
-                idClient += 1;
                 requestLoop();
+                idClient += 1;
             }
         }
         catch(IOException e) {
@@ -54,11 +53,11 @@ public class MainServer {
     public void requestLoop() {
 
         int numReq = 0;
-        int numClient = 0;
+        int numClient = idClient;
         try {
             while(true) {
                 numReq = ois.readInt();
-                numClient = ois.readInt();
+                //numClient = ois.readInt();
                 if(numReq == 1) {
                     setPosition(numClient);
                 } else if(numReq == 2) {

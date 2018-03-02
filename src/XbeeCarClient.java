@@ -1,6 +1,4 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.io.IOException;
 
 class XbeeCarClient  {
 
@@ -18,6 +16,7 @@ class XbeeCarClient  {
       String serverAddr = args[0];
       int port = Integer.parseInt(args[1]);
       client = new MainClient(serverAddr,port,args[2]);
+      System.out.print(client);
       client.mainLoop();
     }
     catch(IOException e) {

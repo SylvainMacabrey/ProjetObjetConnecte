@@ -14,13 +14,17 @@ class MainClient  {
 
     public MainClient(String serverAddr, int port, String xbeeFile) throws IOException {
 		this.xbeeFile = xbeeFile;
-		consoleIn = new BufferedReader(new InputStreamReader(System.in));
 		sock = new Socket(serverAddr,port);
-		id = ois.readInt();
-		System.out.println("my is is "+id);
+        consoleIn = new BufferedReader(new InputStreamReader(System.in));
+        oos = new ObjectOutputStream(sock.getOutputStream());
+        oos.flush();
+        ois = new ObjectInputStream(sock.getInputStream());
+
+        id = ois.readInt();
+		System.out.println("my id is "+id);
 		// creation de l'objet permettant de communiquer avec le xbee
 		comm = new Communicator(xbeeFile, sock);
-		
+		System.out.print(comm);
 		// creation du thread client
 		ThreadClient t = new ThreadClient(comm);
 		t.start();
@@ -31,7 +35,6 @@ class MainClient  {
 		String line="";
 		boolean stop = false;
 		byte[] cmdCar = new byte[16];
-
 		try {
 		    while (!stop) {
 				line = consoleIn.readLine();
@@ -54,7 +57,6 @@ class MainClient  {
                         cmdCar[13] = 0;
                         cmdCar[14] = 0;
                         cmdCar[15] = 0;
-
                         comm.writeToXbee(cmdCar);
                         break;
                     case "RE":
@@ -247,6 +249,7 @@ class MainClient  {
                         stop = true;
                         break;
                 }
+
 		    }
 		}
 		catch(IOException e) {
