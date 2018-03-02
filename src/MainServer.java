@@ -24,12 +24,11 @@ public class MainServer {
 
     HashMap<Integer, ArrayList<Position>> posClients;
 
-    public MainServer(int port, Communicator comm) throws IOException {
+    public MainServer(int port) throws IOException {
         idClient = 1;
         posClients = new HashMap<Integer, ArrayList<Position>>();
         this.port = port;
         conn = new ServerSocket(port);
-        this.comm = comm;
     }
 
     public void mainLoop() {
@@ -79,8 +78,8 @@ public class MainServer {
         ArrayList<Position> positions = posClients.get(numClient);
         positions.add(new Position(latitude, longitude, altitude));
         Position barycentre = calculBarycentre(altitude);
-        Position a; // dernière position connu
-        Position b; // avant dernière position connu
+        Position a = posClients.get(numClient).get(positions.size()-1); // dernière position connu
+        Position b = posClients.get(numClient).get(positions.size()-2); // avant dernière position connu
         Segment s1 = new Segment(a, b);
         Segment s2 = new Segment(a, barycentre);
         double angle = calculAngle(s1.calculLongueurSegment(), s2.calculLongueurSegment(), calculScalaire(a, b));
@@ -103,8 +102,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-
-            comm.writeToXbee(ordre);
         } else if (angle > 22.5 && angle <= 90) {
             ordre[0] = 0;
             ordre[1] = 1;
@@ -123,7 +120,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-            comm.writeToXbee(ordre);
         } else if (angle > -90 && angle <= -22.5) {
             ordre[0] = 0;
             ordre[1] = 1;
@@ -142,7 +138,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-            comm.writeToXbee(ordre);
         } else if (angle > 90 && angle <= 157.5) {
             ordre[0] = 0;
             ordre[1] = 1;
@@ -161,7 +156,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-            comm.writeToXbee(ordre);
         } else if (angle > -157.5 && angle <= -90) {
             ordre[0] = 0;
             ordre[1] = 1;
@@ -180,7 +174,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-            comm.writeToXbee(ordre);
         } else {
             ordre[0] = 0;
             ordre[1] = 1;
@@ -199,7 +192,6 @@ public class MainServer {
             ordre[13] = 0;
             ordre[14] = 0;
             ordre[15] = 0;
-            comm.writeToXbee(ordre);
         }
         oos.writeObject(ordre);
         oos.writeObject(barycentre);
