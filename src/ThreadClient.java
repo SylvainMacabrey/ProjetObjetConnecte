@@ -24,8 +24,14 @@ class ThreadClient extends Thread  {
 				   - si position actuelle = celle du barycentre, arrêter la voiture
 				   - si turn vaut 0, envoyer requete SETPOSITION et récupérer le barycentre courant
 				*/
-				analyzer.analyzeFrame(comm.readFromXbee());
+				line = comm.readFromXbee();
+				analyzer.analyzeFrame(line);
+				currentCenter = new Position(analyzer.getLatitude(), analyzer.getLongitude(), analyzer.getAltitude());
+
 				turn  = (turn+1)%4;
+				if(turn == 0) {
+					Position barycentre = comm.sendSetPositionRequest();
+				}
 
 		    }
 		}

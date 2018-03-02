@@ -57,6 +57,11 @@ public class MainServer {
             while(true) {
                 numReq = ois.readInt();
                 numClient = ois.readInt();
+                if(numReq == 1) {
+                    setPosition(numClient);
+                } else if(numReq == 2) {
+                    getPosition();
+                }
             }
         }
         catch(IOException e) {
@@ -64,11 +69,14 @@ public class MainServer {
         }
     }
 
-    private void setPosition(double latitude, double longitude, double altitude, int numClient) {
+    private void setPosition(int numClient) throws IOException {
+        double latitude = ois.readDouble();
+        double longitude = ois.readDouble();
+        double altitude = ois.readDouble();
         ArrayList<Position> positions = posClients.get(numClient);
         positions.add(new Position(latitude, longitude, altitude));
         Position barycentre = calculBarycentre(altitude);
-        Position a; // dernière position connu
+        Position a ; // dernière position connu
         Position b; // avant dernière position connu
         Segment s1 = new Segment(a, b);
         Segment s2 = new Segment(a, barycentre);

@@ -40,7 +40,12 @@ class Communicator  {
 		Position pos = null;
 		// A COMPLETER
 		// envoie la requête SETPOSITION AU SERVEUR
+        oos.writeDouble(latitude);
+        oos.writeDouble(longitude);
+        oos.writeDouble(altitude);
+
 		// reçoit l'ordre pour l'arduino et l'envoie à 'larduino via writeToXbee
+
 		// reçoit la nouvelle position du barycentre -> pos
 		return pos;	
     }
@@ -48,6 +53,7 @@ class Communicator  {
     public synchronized ArrayList<Position> sendGetPositionRequest() throws IOException {
 		ArrayList<Position> pos = null;
 		// envoie la requête GETPOSITION au serveur
+
 		// reçoit la liste des postions -> pos
 		return pos;
     }

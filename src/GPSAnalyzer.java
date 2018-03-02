@@ -2,9 +2,9 @@ import java.util.Objects;
 
 class GPSAnalyzer {
    // attributs
-   double latitude;
-   double longitude;
-   double altitude;
+   private double latitude;
+   private double longitude;
+   private double altitude;
 
    public GPSAnalyzer() {
       this.latitude = 0;
@@ -23,5 +23,17 @@ class GPSAnalyzer {
             }
          }
       }
+   }
+
+   public double getLatitude() {
+      return latitude;
+   }
+
+   public double getLongitude() {
+      return longitude;
+   }
+
+   public double getAltitude() {
+      return altitude;
    }
 }
