@@ -56,7 +56,9 @@ public class MainServer {
         int numClient = idClient;
         try {
             while(true) {
+                System.out.println(numReq);
                 numReq = ois.readInt();
+                System.out.println(numReq);
                 //numClient = ois.readInt();
                 if(numReq == 1) {
                     setPosition(numClient);

@@ -16,6 +16,7 @@ class Communicator  {
     FileOutputStream os; // writing to xbee file
     ObjectInputStream ois; // reading from socket
     ObjectOutputStream oos; // writing to socket
+    int idClient;
 
     Communicator(String xbeeFile, Socket sock) throws IOException {
 		br = new BufferedReader(new FileReader(xbeeFile));
@@ -23,6 +24,7 @@ class Communicator  {
 		oos = new ObjectOutputStream(sock.getOutputStream());
 		oos.flush();
 		ois = new ObjectInputStream(sock.getInputStream());
+		idClient = ois.readInt();
     }
 
     // read a line of texte from xbee file
@@ -49,7 +51,7 @@ class Communicator  {
         writeToXbee((byte[]) ois.readObject());
 		// reçoit la nouvelle position du barycentre -> pos
         pos = (Position) ois.readObject();
-		return pos;	
+		return pos;
     }
 
     public synchronized ArrayList<Position> sendGetPositionRequest() throws IOException, ClassNotFoundException {

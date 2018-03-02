@@ -15,16 +15,14 @@ class MainClient  {
     public MainClient(String serverAddr, int port, String xbeeFile) throws IOException {
 		this.xbeeFile = xbeeFile;
 		sock = new Socket(serverAddr,port);
-        consoleIn = new BufferedReader(new InputStreamReader(System.in));
-        oos = new ObjectOutputStream(sock.getOutputStream());
-        oos.flush();
-        ois = new ObjectInputStream(sock.getInputStream());
-
-        id = ois.readInt();
-		System.out.println("my id is "+id);
 		// creation de l'objet permettant de communiquer avec le xbee
 		comm = new Communicator(xbeeFile, sock);
-		System.out.print(comm);
+
+        consoleIn = new BufferedReader(new InputStreamReader(System.in));
+
+        id = comm.idClient;
+		System.out.println("my id is "+id);
+
 		// creation du thread client
 		ThreadClient t = new ThreadClient(comm);
 		t.start();
