@@ -84,30 +84,121 @@ public class MainServer {
         Segment s1 = new Segment(a, b);
         Segment s2 = new Segment(a, barycentre);
         double angle = calculAngle(s1.calculLongueurSegment(), s2.calculLongueurSegment(), calculScalaire(a, b));
-        byte[] ordre = new byte[2];
+        byte[] ordre = new byte[16];
         if(angle >= -22.5 && angle <= 22.5) {
-            ordre[0] = 10;
+            ordre[0] = 0;
             ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 1;
+            ordre[9] = 0;
+            ordre[10] = 0;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
+
             comm.writeToXbee(ordre);
         } else if (angle > 22.5 && angle <= 90) {
-            ordre[0] = 10;
-            ordre[1] = 3;
+            ordre[0] = 0;
+            ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 1;
+            ordre[9] = 1;
+            ordre[10] = 0;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
             comm.writeToXbee(ordre);
         } else if (angle > -90 && angle <= -22.5) {
-            ordre[0] = 10;
-            ordre[1] = 4;
+            ordre[0] = 0;
+            ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 0;
+            ordre[9] = 0;
+            ordre[10] = 1;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
             comm.writeToXbee(ordre);
         } else if (angle > 90 && angle <= 157.5) {
-            ordre[0] = 10;
-            ordre[1] =5;
+            ordre[0] = 0;
+            ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 1;
+            ordre[9] = 0;
+            ordre[10] = 1;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
             comm.writeToXbee(ordre);
         } else if (angle > -157.5 && angle <= -90) {
-            ordre[0] = 10;
-            ordre[1] = 6;
+            ordre[0] = 0;
+            ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 0;
+            ordre[9] = 1;
+            ordre[10] = 1;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
             comm.writeToXbee(ordre);
         } else {
-            ordre[0] = 10;
-            ordre[1] = 2;
+            ordre[0] = 0;
+            ordre[1] = 1;
+            ordre[2] = 0;
+            ordre[3] = 1;
+            ordre[4] = 0;
+            ordre[5] = 0;
+            ordre[6] = 0;
+            ordre[7] = 0;
+
+            ordre[8] = 0;
+            ordre[9] = 1;
+            ordre[10] = 0;
+            ordre[11] = 0;
+            ordre[12] = 0;
+            ordre[13] = 0;
+            ordre[14] = 0;
+            ordre[15] = 0;
             comm.writeToXbee(ordre);
         }
         oos.writeObject(ordre);
